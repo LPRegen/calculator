@@ -5,10 +5,8 @@ const calculatorBtns = Array.from(
 );
 
 // Variables.
-let secondNum = '';
 let total = '';
 let operators = ['add', 'multiply', 'subtract', 'divide'];
-let pressedBtn;
 
 // Update display.
 let updateDislpay = function (dataAction, btnContent) {
@@ -20,6 +18,11 @@ let updateDislpay = function (dataAction, btnContent) {
     } else {
       display.textContent += btnContent;
     }
+  }
+
+  // Add decimal and check if there is already a decimal
+  if (dataAction === 'decimal' && !display.textContent.includes('.')) {
+    display.textContent += '.';
   }
 };
 
