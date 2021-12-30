@@ -20,7 +20,7 @@ let updateDislpay = function (dataAction, btnContent) {
     }
   }
 
-  // Add decimal and check if there is already a decimal
+  // Add decimal if there isn't already a decimal
   if (dataAction === 'decimal' && !display.textContent.includes('.')) {
     display.textContent += '.';
   }
@@ -64,6 +64,12 @@ let checkAction = function (dataAction) {
     display.dataset.operator = dataAction;
     display.dataset.lastNumber = display.textContent;
     display.textContent = '0';
+  }
+
+  // Calculate percentage.
+  if (dataAction === 'percentage') {
+    display.textContent = parseFloat(display.textContent) / 100;
+    display.dataset.lastNumber = display.textContent;
   }
 };
 
