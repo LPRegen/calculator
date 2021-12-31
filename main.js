@@ -45,6 +45,7 @@ let allClear = function (dataAction) {
   }
   if (dataAction === 'clear') {
     delete display.dataset.lastNumber;
+    delete display.dataset.operator;
     display.textContent = '0';
     clearAllBtn.textContent = 'AC';
   }
