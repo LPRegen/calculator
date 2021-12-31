@@ -29,8 +29,11 @@ let updateDislpay = function (dataAction, btnContent) {
   // Delete last number.
   if (dataAction === 'delete') {
     display.textContent = Array.from(display.textContent).slice(0, -1).join('');
+
+    // Delete selected operator
     if (display.textContent === '') {
-      display.textContent = '0';
+      display.textContent = display.dataset.lastNumber;
+      delete display.dataset.operator;
     }
   }
 };
