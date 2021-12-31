@@ -3,6 +3,7 @@ let display = document.querySelector('.calculator-display');
 const calculatorBtns = Array.from(
   document.querySelectorAll('.calculator-buttons')
 );
+let clearAllBtn = document.querySelector('.clear');
 
 // Variables.
 let total = '';
@@ -31,6 +32,18 @@ let updateDislpay = function (dataAction, btnContent) {
     if (display.textContent === '') {
       display.textContent = '0';
     }
+  }
+};
+
+// When user clicks AC button.
+let allClear = function (dataAction) {
+  if (display.textContent !== '0') {
+    clearAllBtn.textContent = 'C';
+  }
+  if (dataAction === 'clear') {
+    delete display.dataset.lastNumber;
+    display.textContent = '0';
+    clearAllBtn.textContent = 'AC';
   }
 };
 
@@ -92,6 +105,7 @@ calculatorBtns.forEach((el) => {
       updateDislpay(dataAction, btnContent);
       checkAction(dataAction);
       equalsBtn(dataAction, selectedOperator);
+      allClear(dataAction);
     }
   });
 });
