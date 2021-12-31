@@ -97,6 +97,16 @@ let checkAction = function (dataAction) {
   }
 };
 
+// Apply "pressed" class on selected operator.
+let addClass = function (dataAction, target) {
+  let options = ['add', 'divide', 'multiply', 'subtract'];
+  if (options.includes(`${dataAction}`)) {
+    target.classList.add('pressed');
+  } else {
+    target.classList.remove('pressed');
+  }
+};
+
 calculatorBtns.forEach((el) => {
   el.addEventListener('click', function (e) {
     let target = e.target;
@@ -105,10 +115,16 @@ calculatorBtns.forEach((el) => {
       let btnContent = target.textContent;
       let selectedOperator = display.dataset.operator;
 
+      // Removes pressed class.
+      Array.from(target.parentNode.children).forEach((el) =>
+        el.classList.remove('pressed')
+      );
+
       updateDislpay(dataAction, btnContent);
       checkAction(dataAction);
       equalsBtn(dataAction, selectedOperator);
       allClear(dataAction);
+      addClass(dataAction, target);
     }
   });
 });
