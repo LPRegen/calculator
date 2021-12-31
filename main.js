@@ -12,13 +12,17 @@ let operators = ['add', 'multiply', 'subtract', 'divide'];
 // Update display.
 let updateDislpay = function (dataAction, btnContent) {
   if (!dataAction) {
-    // Update display content.
     // ! refactor to ternary op
     if (display.textContent === '0') {
       display.textContent = btnContent;
     } else {
       display.textContent += btnContent;
     }
+  }
+
+  // Set ten characters as maximum .
+  if (display.textContent.length > 10) {
+    display.textContent = display.textContent.slice(0, 10);
   }
 
   // Add decimal if there isn't already a decimal
@@ -121,6 +125,7 @@ calculatorBtns.forEach((el) => {
         el.classList.remove('pressed')
       );
 
+      // Function calls.
       updateDislpay(dataAction, btnContent);
       checkAction(dataAction);
       equalsBtn(dataAction, selectedOperator);
