@@ -24,6 +24,14 @@ let updateDislpay = function (dataAction, btnContent) {
   if (dataAction === 'decimal' && !display.textContent.includes('.')) {
     display.textContent += '.';
   }
+
+  // Delete last number.
+  if (dataAction === 'delete') {
+    display.textContent = Array.from(display.textContent).slice(0, -1).join('');
+    if (display.textContent === '') {
+      display.textContent = '0';
+    }
+  }
 };
 
 // Calculate
