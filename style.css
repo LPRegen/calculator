@@ -1,0 +1,40 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Display */
+.display {
+  height: 80px;
+  width: 300px;
+  text-align: right;
+}
+
+.calculator-display {
+  padding: 20px 10px 20px 0px;
+  font-size: 30px;
+}
+
+/* Buttons */
+.calculator-buttons {
+  height: 400px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button-zero {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.button-equal {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+/* Pressed class */
+.pressed {
+  background-color: rgba(0, 0, 0, 0.2);
+}
